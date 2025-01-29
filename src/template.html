@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task</title>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+
+      <div class="menu">
+        <h1>Projects</h1>
+        <div class="projects">
+     
+        </div>
+        <button class="add-project">Add Project</button>
+      </div>
+    </div>
+    <div class="sidecontainer">
+      <div class="header">
+        <h2>Tasks</h2>
+        <button class="add-task">New Task</button>
+      </div>
+
+      <div class="task-con">
+
+
+
+
+        
+
+      </div>
+    </div>
+  </div>
+
+  <dialog class="project-dialog">
+    <form class="project-form">
+      <input placeholder="Project Name" class="project-name" required>
+      <div>
+        <button type="submit" class="add">add</button>
+        <button type="button" class="project-close">close</button>
+      </div>
+    </form>
+
+  </dialog>
+ 
+<dialog class="task-dialog">
+  <form class="task-form">
+    <input placeholder="title" class="task-title">
+    <input placeholder="discription" class="task-dis">
+    <select class="task-prio">
+      <option value="high">high</option>
+      <option value="medium">medium</option>
+      <option value="low">low</option>
+    </select>
+    <div>
+      <button type="submit" class="add-task">Add</button>
+      <button class="close-task" type="button">Close</button>
+    </div>
+  </form>
+</dialog>
+</body>
+</html>

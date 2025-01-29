@@ -1,0 +1,15 @@
+.project-dialog{
+  margin-top: 15rem;
+  justify-self: center;
+  width: 15rem;
+  height: 10rem;
+background-color: rgb(161, 152, 152);
+}
+
+.task-dialog{
+  margin-top: 15rem;
+  justify-self: center;
+  width: 15rem;
+  height: 10rem;
+background-color: rgb(215, 208, 208);
+}

@@ -1,10 +1,10 @@
 let currentFolder = "Default";
-let deleteFolder = ""
 
 class Task {
-  constructor(title, dis, prio) {
+  constructor(title, dis, date, prio) {
     this.title = title;
     this.dis = dis;
+    this.date = date;
     this.prio = prio;
   }
 }
@@ -33,6 +33,7 @@ function createProject() {
       localStorage.setItem(folder, JSON.stringify([]));
       dialog.close();
       createFolder(folder);
+      deleteProject();
     }
   }
 
@@ -40,9 +41,8 @@ function createProject() {
     e.preventDefault();
     const folder = document.querySelector(".project-name");
     storeProject(folder.value);
-    selectedFolder()
+    selectedFolder();
   });
-
 
   close.addEventListener("click", () => {
     dialog.close();
@@ -70,7 +70,7 @@ function createFolder(folder) {
   project.className = "folder-button";
   project.innerHTML = `<button class="project-folder">${folder}</button><button class="delete-folder">X</button>`;
   folderCon.appendChild(project);
-} 
+}
 
 function addTask() {
   const form = document.querySelector(".task-form");
@@ -81,11 +81,14 @@ function addTask() {
     e.preventDefault();
     const title = document.querySelector(".task-title");
     const dis = document.querySelector(".task-dis");
+    const date = document.querySelector(".task-date");
     const prio = document.querySelector(".task-prio");
 
-    const task = new Task(title.value, dis.value, prio.value);
-    storeTask(currentFolder, task);
+    const task = new Task(title.value, dis.value, date.value, prio.value);
+    storeTask(task);
     createTask(task);
+
+    dialog.close();
   });
   close.addEventListener("click", () => dialog.close());
 }
@@ -100,11 +103,11 @@ function selectedFolder() {
   });
 }
 
-function storeTask(selectedFolder, task) {
-  const project = localStorage.getItem(selectedFolder);
+function storeTask(task) {
+  const project = localStorage.getItem(currentFolder);
   const localTasks = project ? JSON.parse(project) : [];
   localTasks.push(task);
-  localStorage.setItem(selectedFolder, JSON.stringify(localTasks));
+  localStorage.setItem(currentFolder, JSON.stringify(localTasks));
 }
 
 function createTask(task) {
@@ -112,25 +115,103 @@ function createTask(task) {
   const con = document.querySelector(".task-con");
   newTask.className = "task";
   newTask.innerHTML = `<div class="task">
-          <div class="title">${task.title}</div>
-          <div class="dis">${task.dis}</div>
-          <div class="priority">${task.prio}</div>
+          <div class="title" contenteditable="false">${task.title}</div>
+          <div class="dis" contenteditable="false">${task.dis}</div>
+          <div class="date" contenteditable="false">${task.date}</div>
+          <div class="priority" contenteditable="false">${task.prio}</div>
           <button class="edit">Edit</button>
-          <button class="delete">Delete</button>
+          <button class="delete-task">Delete</button>
         </div>`;
+
   con.appendChild(newTask);
+  deleteTask();
 }
 
 function deleteProject() {
   const deleteButtons = document.querySelectorAll(".delete-folder");
-
   deleteButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-      deleteFolder = e.target.previousSibling.innerText;
+      const deleteFolder = e.target.previousSibling.innerText;
       localStorage.removeItem(deleteFolder);
       e.target.parentElement.remove();
     });
   });
+}
+
+function deleteTask() {
+  const deleteButtons = document.querySelectorAll(".delete-task");
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const parent = e.target.parentElement;
+      console.log(parent);
+      const taskObj = getElements(parent);
+      deleteTaskStorage(taskObj);
+      parent.parentElement.remove();
+    });
+  });
+
+  function getElements(parent) {
+    return new Task(
+      parent.children[0].innerText,
+      parent.children[1].innerText,
+      parent.children[2].innerText,
+      parent.children[3].innerText
+    );
+  }
+}
+
+function deleteTaskStorage(task) {
+  const storageTasks = JSON.parse(localStorage.getItem(currentFolder));
+  const filteredTasks = storageTasks.filter(
+    (storageTask) =>
+      !(
+        storageTask.title === task.title &&
+        storageTask.dis === task.dis &&
+        storageTask.date === task.date &&
+        storageTask.prio === task.prio
+      )
+  );
+  localStorage.setItem(currentFolder, JSON.stringify(filteredTasks));
+}
+
+function editTask() {
+  const con = document.querySelector(".task-con");
+  con.addEventListener("click", (e) => {
+    const parent = e.target.parentElement;
+    const elements = parent.querySelectorAll(".title, .dis, .date, .priority");
+
+    if (e.target.classList.contains("edit")) {
+      const currentTask = new Task(
+        elements[0].innerText,
+        elements[1].innerText,
+        elements[2].innerText,
+        elements[3].innerText
+      );
+      if (e.target.innerText === "Edit") {
+        e.target.innerText = "Save";
+        elements.forEach((el) => {
+          el.contentEditable = "true";
+        });
+        deleteTaskStorage(currentTask);
+      } else {
+        e.target.innerText = "Edit";
+        elements.forEach((el) => {
+          el.contentEditable = "false";
+        });
+        changeTask(elements);
+      }
+    }
+  });
+
+  function changeTask(elements) {
+    const task = new Task(
+      elements[0].innerText,
+      elements[1].innerText,
+      elements[2].innerText,
+      elements[3].innerText
+    );
+    storeTask(task);
+  }
 }
 
 export function interactions() {
@@ -140,4 +221,8 @@ export function interactions() {
   renderFolder();
   addTask();
   selectedFolder();
+  document.addEventListener("DOMContentLoaded", () => {
+    editTask();
+    deleteProject();
+  });
 }

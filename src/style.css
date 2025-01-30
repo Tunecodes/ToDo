@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+button:hover{
+   cursor: pointer;
+}
+
 .container{
   display: flex;
 }

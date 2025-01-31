@@ -1,15 +1,104 @@
-.project-dialog{
-  margin-top: 15rem;
+.project-dialog {
   justify-self: center;
-  width: 15rem;
-  height: 10rem;
-background-color: rgb(161, 152, 152);
+  margin-top: 15rem;
+  width: 12rem;
+  height: 5.2rem;
+  background-color: gray;
+  border-radius: 2rem;
+  border: none;
 }
 
-.task-dialog{
+.dialog-button-container {
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+.dialog-button-container button {
+  width: 4rem;
+  height: 1.5rem;
+  color: gray;
+  border-radius: 10px;
+  border: none;
+  margin-left: 0.2rem;
+  margin-bottom: 0.6rem;
+  
+}
+
+.dialog-button-container button:hover, .task-dialog-button button:hover {
+  transform: scale(1.05);
+}
+
+.project-close:hover, .close-task:hover {
+  color: rgb(233, 142, 142);
+}
+
+.add:hover, .add-task:hover {
+  color: rgb(0, 0, 0);
+}
+
+.project-name {
+  display: flex;
+  justify-self: center;
+  margin-top: 1.5rem;
+  font-size: 18px;
+  width: 11rem;
+  height: none;
+  color: gray;
+  border: none;
+  border-radius: 6px;
+}
+
+.project-name::placeholder {
+  text-align: center;
+}
+.project-name:hover {
+  cursor: text;
+}
+
+.task-dialog {
   margin-top: 15rem;
   justify-self: center;
-  width: 15rem;
-  height: 10rem;
-background-color: rgb(215, 208, 208);
+  width: 14rem;
+  height: 15rem;
+  background-color: rgb(255, 255, 255);
+  border: gray 5px solid;
+}
+
+.task-form{
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  gap: .5em;
+  margin-top: 1em;
+}
+
+textarea{
+  height: 5rem;
+}
+
+.task-title, .task-dis, .task-date, .task-prio {
+  background-color: gray;
+  padding-left: .35em;
+  color: white;
+  border: none;
+}
+
+textarea::placeholder, .task-title::placeholder{
+  color: white;
+}
+
+.task-dialog-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  gap: 1em;
+}
+
+.task-dialog-button button{
+  height: 2em;
+  width: 5em;
+  border: none;
+  background-color: gray;
+  color: white;
 }

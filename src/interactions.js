@@ -37,15 +37,17 @@ function createProject() {
     }
   }
 
+  
+  close.addEventListener("click", () => {
+    dialog.close();
+  });
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const folder = document.querySelector(".project-name");
     storeProject(folder.value);
     selectedFolder();
-  });
-
-  close.addEventListener("click", () => {
-    dialog.close();
+    form.reset();
   });
 }
 
@@ -90,7 +92,7 @@ function addTask() {
     const task = new Task(title.value, dis.value, date.value, prio.value);
     storeTask(task);
     createTask(task);
-
+    form.reset();
     dialog.close();
   });
   close.addEventListener("click", () => dialog.close());
@@ -126,7 +128,6 @@ function createTask(task) {
           <button class="edit">Edit</button>
           <button class="delete-task">Delete</button>
         </div>`;
-
   con.appendChild(newTask);
   deleteTask();
 }

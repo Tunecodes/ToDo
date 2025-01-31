@@ -36,25 +36,24 @@
   <dialog class="project-dialog">
     <form class="project-form">
       <input placeholder="Project Name" class="project-name" required>
-      <div>
+      <div class="dialog-button-container">
         <button type="submit" class="add">add</button>
         <button type="button" class="project-close">close</button>
       </div>
     </form>
-
   </dialog>
  
 <dialog class="task-dialog">
   <form class="task-form">
-    <input placeholder="title" class="task-title">
-    <input placeholder="discription" class="task-dis">
-    <input type="date" class="task-date">
+    <input placeholder="title" class="task-title" required>
+    <textarea placeholder="discription" class="task-dis"></textarea>
+    <input type="date" class="task-date" required>
     <select class="task-prio">
       <option value="high">high</option>
       <option value="medium">medium</option>
       <option value="low">low</option>
     </select>
-    <div>
+    <div class="task-dialog-button">
       <button type="submit" class="add-task">Add</button>
       <button class="close-task" type="button">Close</button>
     </div>

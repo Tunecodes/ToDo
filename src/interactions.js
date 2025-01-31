@@ -1,4 +1,4 @@
-let currentFolder = "Default";
+let currentFolder = "All Tasks";
 
 class Task {
   constructor(title, dis, date, prio) {
@@ -18,7 +18,7 @@ function addProject() {
 }
 
 function openTask() {
-  const addTask = document.querySelector(".add-task");
+  const addTask = document.querySelector(".new-task");
   const taskDia = document.querySelector(".task-dialog");
   addTask.addEventListener("click", () => taskDia.showModal());
 }
@@ -55,9 +55,12 @@ function renderFolder() {
   }
 }
 
-function renderTask(folder) {
+function clearTasks(){
   const con = document.querySelector(".task-con");
   con.innerHTML = "";
+}
+
+function renderTask(folder) {
   const tasks = JSON.parse(localStorage.getItem(folder));
   for (let i = 0; i < tasks.length; i++) {
     createTask(tasks[i]);
@@ -97,6 +100,7 @@ function selectedFolder() {
   const projects = document.querySelectorAll(".project-folder");
   projects.forEach((project) => {
     project.addEventListener("click", (e) => {
+      clearTasks();
       renderTask(e.target.innerText);
       currentFolder = e.target.innerText;
     });
@@ -214,6 +218,16 @@ function editTask() {
   }
 }
 
+function allTasks(){
+  const allTaskButton = document.querySelector("#all-tasks")
+  allTaskButton.addEventListener("click", ()=> {
+    clearTasks();
+    Object.keys(localStorage).forEach(key => {
+      renderTask(key)
+    })
+  })
+}
+
 export function interactions() {
   addProject();
   openTask();
@@ -221,6 +235,7 @@ export function interactions() {
   renderFolder();
   addTask();
   selectedFolder();
+  allTasks();
   document.addEventListener("DOMContentLoaded", () => {
     editTask();
     deleteProject();

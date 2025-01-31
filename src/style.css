@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+*:hover{
+  cursor: default;
+}
+
 button:hover{
    cursor: pointer;
 }
@@ -14,7 +18,8 @@ button:hover{
 .sidebar{
   height: 100vh;
   width: 20vw;
-  background-color: rgb(123, 123, 197);
+  background-color: gray;
+  box-shadow: 1px 1px 5px 2px rgb(70, 68, 68);
 }
 
 .sidecontainer{
@@ -41,7 +46,6 @@ gap: 1rem;
 .task-con{
   display: flex;
   flex-wrap: wrap;
-  background-color: blue;
   margin: 2rem;
 }
 
@@ -61,7 +65,83 @@ gap: 1rem;
   display: flex;
   flex-direction: column;
 }
+h1{
+  align-self: center;
+  color: white;
+}
+h2{
+  font-size: 3rem;
+  color: gray;
+}
 
+.new-task{
+  height: 2rem;
+  width: 7.5rem;
+  background: gray;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.new-task:hover {
+  transform: scale(1.05);
+}
+
+.project-folder{
+  height: 2rem;
+  width: 9rem;
+}
+
+.folder-button{
+  margin-top: 1rem;
+}
+
+
+.delete-folder{
+  height: 2rem;
+  width: 1.5rem;
+  background-color: rgb(233, 142, 142);
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important; 
+}
+.delete-folder:hover{
+  transform: scale(1.1) !important;
+}
+
+#all-tasks{
+height: 2rem;
+}
+
+.menu button{
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  color: gray;
+}
+
+.project-folder {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important; 
+}
+
+.menu button:hover{
+  transform: scale(1.05);
+}
+
+.menu button.add-project{
+  align-self: center;
+  margin-top: 5rem;
+  height: 2.5rem;
+  width: 7.5rem;
+  border: white solid 3px;
+  color: white;
+  background-color: gray;
+}
+
+
+.menu button.add-project:hover{
+  border: rgb(187, 184, 184) solid 1px;
+}
 
 
 

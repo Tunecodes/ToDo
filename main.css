@@ -1,0 +1,281 @@
+/*!*****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
+  \*****************************************************************/
+*{
+  padding: 0;
+  margin: 0;
+}
+
+*:hover{
+  cursor: default;
+}
+
+button:hover{
+   cursor: pointer;
+}
+
+.container{
+  display: flex;
+}
+
+.sidebar{
+  height: 100vh;
+  width: 20vw;
+  min-width: 17rem;
+  background-color: gray;
+  box-shadow: 1px 1px 5px 2px rgb(70, 68, 68);
+}
+
+.sidecontainer{
+  height: 100vh;
+  width: 80vw;
+}
+
+
+.menu {
+  display: flex;
+  flex-direction: column;
+margin-top: 3rem;
+justify-self: center;
+gap: 1rem;
+}
+
+.header{
+  height: 5rem;
+  width: 5rem;
+  justify-self: center;
+  margin-top: 1rem;
+}
+
+.task-con{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem;
+}
+
+
+
+
+.projects{
+  display: flex;
+  flex-direction: column;
+}
+h1{
+  align-self: center;
+  color: white;
+  font-size: 3rem;
+}
+h2{
+  font-size: 3rem;
+  color: gray;
+}
+
+.new-task{
+  height: 2rem;
+  width: 7.5rem;
+  background: gray;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
+
+.new-task:hover {
+  transform: scale(1.05);
+}
+
+.project-folder{
+  height: 2rem;
+  width: 9rem;
+}
+
+.folder-button{
+  margin-top: 1rem;
+}
+
+
+.delete-folder{
+  height: 2rem;
+  width: 1.5rem;
+  background-color: rgb(233, 142, 142);
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important; 
+}
+.delete-folder:hover{
+  transform: scale(1.1) !important;
+}
+
+#all-tasks{
+height: 2rem;
+}
+
+.menu button{
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 7px;
+  color: gray;
+}
+
+.project-folder {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important; 
+}
+
+.menu button:hover{
+  transform: scale(1.05);
+}
+
+.menu button.add-project{
+  align-self: center;
+  margin-top: 5rem;
+  height: 2.5rem;
+  width: 7.5rem;
+  border: white solid 3px;
+  color: white;
+  background-color: gray;
+}
+
+
+.menu button.add-project:hover{
+  border: rgb(187, 184, 184) solid 1px;
+}
+
+
+
+
+/*!******************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/dialog.css ***!
+  \******************************************************************/
+.project-dialog {
+  justify-self: center;
+  margin-top: 15rem;
+  width: 12rem;
+  height: 5.2rem;
+  background-color: gray;
+  border-radius: 2rem;
+  border: none;
+}
+
+.dialog-button-container {
+  display: flex;
+  margin-top: 5px;
+  justify-content: center;
+}
+
+.dialog-button-container button {
+  width: 4rem;
+  height: 1.5rem;
+  color: gray;
+  border-radius: 10px;
+  border: none;
+  margin-left: 0.2rem;
+  margin-bottom: 0.6rem;
+  
+}
+
+.dialog-button-container button:hover, .task-dialog-button button:hover, .delete-task:hover, .edit:hover {
+  transform: scale(1.05);
+}
+
+.project-close:hover, .close-task:hover, .delete-task:hover {
+  color: rgb(233, 142, 142);
+}
+
+.add:hover, .add-task:hover, .edit:hover {
+  color: rgb(0, 0, 0);
+}
+
+.project-name {
+  display: flex;
+  justify-self: center;
+  margin-top: 1.5rem;
+  font-size: 18px;
+  width: 11rem;
+  height: none;
+  color: gray;
+  border: none;
+  border-radius: 6px;
+}
+
+.project-name::placeholder {
+  text-align: center;
+}
+.project-name:hover {
+  cursor: text;
+}
+
+.task-dialog {
+  margin-top: 15rem;
+  justify-self: center;
+  width: 14rem;
+  height: 15rem;
+  background-color: rgb(255, 255, 255);
+  border: gray 5px solid;
+}
+
+.task-form{
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  gap: .5em;
+  margin-top: 1em;
+}
+
+textarea{
+  height: 5rem;
+}
+
+.task-title, .task-dis, .task-date, .task-prio {
+  background-color: gray;
+  padding-left: .35em;
+  color: white;
+  border: none;
+}
+
+textarea::placeholder, .task-title::placeholder{
+  color: white;
+}
+
+.task-dialog-button{
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  gap: 1em;
+}
+
+.task-dialog-button button{
+  height: 2em;
+  width: 5em;
+  border: none;
+  background-color: gray;
+  color: white;
+}
+
+/*!****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/task.css ***!
+  \****************************************************************/
+.task{
+  display: flex;
+  flex-direction: column;
+  max-width: 10rem;
+  height: auto;
+  background-color: gray;
+  color: white;
+  padding: 1em;
+  margin: .5rem;
+  gap: 5px;
+}
+
+.dis{
+  word-wrap: break-word;
+}
+
+.task button{
+  height: 20px;
+  width: 100px;
+  border: none;
+  color: gray;
+  border-radius: 10px;
+}
+
+
+
